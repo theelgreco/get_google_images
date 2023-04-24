@@ -13,10 +13,8 @@ app.get("/:actor", (req, res) => {
   const { actor } = req.params;
   const split = actor.split("&");
   let arr = [];
-  console.log(split);
-  //
 
-  split.forEach((actor, index) => {
+  split.forEach((actor) => {
     getImageResults(actor)
       .then((url) => {
         const names = actor.split("+");
@@ -27,9 +25,8 @@ app.get("/:actor", (req, res) => {
         arr.push({ name: joinedName, image: url });
       })
       .then(() => {
-        if (index === split.length - 1) {
-          console.log(arr);
-          res.status(200).send({ result: arr });
+        if (arr.length === split.length) {
+          res.status(200).send(arr);
         }
       });
   });
