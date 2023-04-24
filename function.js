@@ -960,7 +960,6 @@ function getImageResults(string) {
       });
       const imageTag = filtered[1].split(`src="`)[1];
       const url = imageTag.replace('"/>', "");
-      console.log(url);
       return url;
     });
 }
